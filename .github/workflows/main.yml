@@ -1,0 +1,23 @@
+name: Run main.ts with Deno
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-deno:
+    name: Run Deno Script
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v6
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Run main.ts
+        run: "deno run main.ts"
